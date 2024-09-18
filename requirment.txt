@@ -1,0 +1,6 @@
+tensorflow==2.15.1
+xgboost==1.7.5
+shap
+matplotlib
+seaborn
+scikit-learn
