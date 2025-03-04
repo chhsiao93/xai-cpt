@@ -17,16 +17,21 @@ The framework consists of four parts:
 ## Autoencoder Training for CPT Profiles
 <p>The reconstruction results show that the autoencoder effectively captures the trend of the CPT profile and compresses it into a lower-dimensional representation. The compressed latent features are then concatenated with site features (PGA, GWD, Elevation, L [distance to the river], and slope) to train an XGB model. </p>
 
-![ReconstructProfile](output/4048_profile.png)
+<p align="center">
+    <img src="output/4048_profile.png" alt="ReconstructProfile" width="60%">
+</p>
+
 ## XGB Models for Lateral Spreading Prediction
 <p>To evaluate the impact of latent features on prediction performance, we train four models using different combinations of input features. The results indicate that incorporating CPT latent features as inputs enhances model performance.</p>
 
+<p align="center">
 | Model | Input Features | Accuracy | Precision | Recall | F1-Score |
 |-------|----------------|----------|-----------|--------|----------|
 | Model 1 | Site Features Only | 0.79 | 0.77 | 0.78 | 0.78 |
 | Model 2 | Site Features + CPT<sub>med & std</sub> | 0.82 | 0.79 | 0.81 | 0.80 |
 | Model 3 | Site Features + CPT<sub>1-m avg</sub>  | 0.80 | 0.81 | 0.75 | 0.78 |
 | Model 4 | Site Features + CPT<sub>latent</sub>  | 0.83 | 0.85 | 0.77 | 0.81 |
+</p>
 
 ## SHAP Analysis
 - We employ SHAP analysis to interpret our model. The analysis reveals that the most important site features are Elevation, PGA, GWD, and L, while the most influential latent feature is Ic3, a latent feature derived from the Ic profile.
