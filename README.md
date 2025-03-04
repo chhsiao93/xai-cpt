@@ -8,7 +8,10 @@ The framework consists of four parts:
 2. Training a predictive model using site features (such as PGA) along with the latent features from the autoencoder to predict lateral spreading occurrence.
 3. Using SHAP explanations to identify the most important latent feature.
 4. Using the decoder to determine which part of the CPT profile affects the prediction the most.
-![Framework](output/framework.png)
+
+<p align="center">
+    <img src="output/framework.png" alt="Framework" width="60%">
+</p>
 
 # Results
 ## Autoencoder Training for CPT Profiles
@@ -17,6 +20,7 @@ The framework consists of four parts:
 ![ReconstructProfile](output/4048_profile.png)
 ## XGB Models for Lateral Spreading Prediction
 <p>To evaluate the impact of latent features on prediction performance, we train four models using different combinations of input features. The results indicate that incorporating CPT latent features as inputs enhances model performance.</p>
+
 | Model | Input Features | Accuracy | Precision | Recall | F1-Score |
 |-------|----------------|----------|-----------|--------|----------|
 | Model 1 | Site Features Only | 0.79 | 0.77 | 0.78 | 0.78 |
@@ -29,11 +33,15 @@ The framework consists of four parts:
 - The SHAP analysis indicates that a high Ic3 value is associated with high SHAP values, suggesting that sites with high Ic3 are more likely to experience lateral spreading.
 - The SHAP values of Ic3 are significantly influenced by GWD—the deeper the GWD, the lower the Ic3 SHAP values.
 
-![GlobalExplanation](output/global_shap.png)
-![DependencyPlot](output/dependency.png)
+<p align="center">
+    <img src="output/global_shap.png" alt="Global Explanation" width="45%">
+    <img src="output/dependency.png" alt="Dependency Plot" width="45%">
+</p>
 
 ## Decoding Latent Feature
 - To further investigate this relationship, we sample the latent features, decode them into reconstructed profiles, and observe that Ic3 has a significant impact on the Ic profile at depths of 1–3 meters. The reconstructed profiles show that sites with high Ic3 values tend to have low Ic values (sandy soils), while sites with low Ic3 values exhibit high Ic values (clayey soils) within this depth range.
 - This observation aligns with the SHAP analysis and our understanding of liquefaction. Additionally, the emphasis on the 1–3 meters depth explains why Ic3 becomes less important when GWD is deeper.
 
-![ImpactOfIc3](output/ic3.png)
+<p align="center">
+    <img src="output/ic3.png" alt="Impact of Ic3" width="60%">
+</p>
